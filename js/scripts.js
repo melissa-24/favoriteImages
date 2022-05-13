@@ -1,4 +1,4 @@
-var nasa = keys.NASAKEY
+// var nasa = keys.NASAKEY
 var toons = 'https://dojo.navyladyveteran.com/characters/'
 var squish = 'https://dojo.navyladyveteran.com/squishies/'
 
@@ -11,16 +11,16 @@ $(document).ready(function(){
         })
     })
 
-    nasaurl = `https://api.nasa.gov/planetary/apod?api_key=${nasa}`
+    // nasaurl = `https://api.nasa.gov/planetary/apod?api_key=${nasa}`
 
-    $.get(nasaurl, function(res) {
-        console.log(res)
-        var html_str = ""
-        html_str +="<img id='img' src='" + res.url + "' alt='Nasa Photo'>"
-        $(".photo").html(html_str)
-        // html_str +="<form action='/images/create/' method='post'> <input type='hidden' name='name' value='" + res.title +"'><input type='hidden' name='img' value='" + res.url +"'> <button>Save Img to Database</button></form>"
-        // $(".photo").html(html_str)
-    }, 'json')
+    // $.get(nasaurl, function(res) {
+    //     console.log(res)
+    //     var html_str = ""
+    //     html_str +="<img id='img' src='" + res.url + "' alt='Nasa Photo'>"
+    //     $(".photo").html(html_str)
+    //     // html_str +="<form action='/images/create/' method='post'> <input type='hidden' name='name' value='" + res.title +"'><input type='hidden' name='img' value='" + res.url +"'> <button>Save Img to Database</button></form>"
+    //     // $(".photo").html(html_str)
+    // }, 'json')
     $('#button').click(function(){
         console.log('button clicked')
         $('#img').animate( {
