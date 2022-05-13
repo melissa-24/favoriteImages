@@ -32,14 +32,14 @@ def login(request):
     usernameUser = User.objects.filter(username = request.POST['username'])
     emailUser = User.objects.filter(email = request.POST['email'])
     if usernameUser:
-        userLogin = user[0]
+        userLogin = usernameUser[0]
         if bcrypt.checkpw(request.POST['password'].encode(), userLogin.password.encode()):
             request.session['user_id'] = userLogin.id
             return redirect('/dashboard/')
         messages.error(request, 'Invalid Credentials')
         return redirect('/')
     if emailUser:
-        userLogin = user[0]
+        userLogin = emailUser[0]
         if bcrypt.checkpw(request.POST['password'].encode(), userLogin.password.encode()):
             request.session['user_id'] = userLogin.id
             return redirect('/dashboard/')
