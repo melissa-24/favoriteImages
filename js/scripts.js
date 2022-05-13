@@ -23,6 +23,7 @@ $(document).ready(function(){
     // }, 'json')
     $('#button').click(function(){
         console.log('button clicked')
+        alert("API disabled while deployed vie github pages to keep api key hidden")
         $('#img').animate( {
             width: 'toggle'
         })
