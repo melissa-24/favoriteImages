@@ -74,7 +74,7 @@ WSGI_APPLICATION = 'favoriteImages.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'mysql.connector.django',
-        'NAME': 'db',
+        'NAME': 'favImgs',
         'USER': 'root',
         'PASSWORD': 'HoneyBee#4',
         'HOST': 'localhost',
@@ -108,7 +108,7 @@ USE_TZ = True
 
 # STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATIC_URL = '/static/'
+STATIC_URL = '/app/static/'
 
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # MEDIA_URL = '/media/'

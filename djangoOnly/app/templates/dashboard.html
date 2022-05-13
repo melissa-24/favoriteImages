@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/styles.css'%}">
+    <title>{{user.firstName}} {{user.lastName}}</title>
+</head>
+<body>
+    <header>
+        <h1>Favorite Images App</h1>
+        <nav>
+            {% block menu %} {% include 'menu.html' %} {% endblock menu %}
+        </nav>
+    </header>
+    <div class="messages">
+        {% if messages %}
+            {% for m in messages %}
+                <h5>{{m}}</h5>
+            {% endfor %}
+        {% endif %}
+    </div>
+    <main>
+        <h1>Welcome {{user.firstName}} {{user.lastName}}</h1>
+        <div class="row">
+            <button><a href="/images/add/">Add Images</a></button>
+            <button><a href="/profile/">View/Edit your information</a></button>
+        </div>
+
+    </main>
+    <footer>
+
+    </footer>
+    <script type='text/javascript' src="{% static 'js/key.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script src='{% static "js/script.js"%}'></script>
+</body>
+</html>
