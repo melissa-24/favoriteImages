@@ -1,6 +1,7 @@
 # Favorite Images Project
 This project is based off of an application that I built during one of my python classes.
 - The idea is to take the application and create it in all the stacks that are taught in the PT Accelerated program at Coding Dojo and a combination of them as well. There are also a few extras thrown in as well.
+- Live deployed site (tempish) http://dojo-ninja.com/index.html
 
 ## Application breakdown
 1. [Flask Only](flaskOnly/notes.md) - This will be a full stack flask application
