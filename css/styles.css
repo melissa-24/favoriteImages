@@ -20,6 +20,9 @@ th {
 table {
   margin: 2em;
 }
+p {
+  font-size: 1.1em;
+}
 body {
   display: flex;
   flex-direction: column;
@@ -87,6 +90,18 @@ body main .row .column {
   justify-content: center;
   align-items: center;
 }
+body main .row .column ul li {
+  font-size: 1.2em;
+}
+body main .row .column ul li a {
+  text-decoration: none;
+  color: #000;
+  padding: 0 1em;
+  border: 3px groove #11c49d;
+}
+body main .row .column ul li a:hover {
+  color: #11c49d;
+}
 body main .row #images,
 body main .row #temps {
   display: none;
@@ -148,4 +163,10 @@ body main .api div {
 }
 body main .api div img {
   max-width: 250px;
+}
+body footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
