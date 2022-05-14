@@ -79,6 +79,13 @@ body main .row {
   align-items: center;
   width: 95%;
   align-items: flex-start;
+  justify-content: space-evenly;
+}
+body main .row .column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 body main .row #images,
 body main .row #temps {
@@ -141,19 +148,4 @@ body main .api div {
 }
 body main .api div img {
   max-width: 250px;
-}
-body main .weather {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-body main .weather #forecast {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 0.5em;
-  margin: 1em;
-  border: 3px groove #1595c7;
 }

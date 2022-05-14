@@ -68,6 +68,11 @@ body {
             .flexrow();
             width: 95%;
             align-items: flex-start;
+            justify-content: space-evenly;
+
+            .column {
+                .flexcolumn();
+            }
 
             #images, #temps {
                 display: none;
@@ -121,16 +126,6 @@ body {
                 img {
                     max-width: 250px;
                 }
-            }
-        }
-        .weather {
-            .flexcolumn();
-
-            #forecast {
-                .flexcolumn();
-                padding: .5em;
-                margin: 1em;
-                border: 3px groove #1595c7;
             }
         }
     }
