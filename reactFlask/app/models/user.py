@@ -12,6 +12,7 @@ class User:
         self.lastName = data['lastName']
         self.email = data['email']
         self.username = data['username']
+        self.app = "React Flask App"
         self.password = data['password']
         self.createdAt = data['createdAt']
         self.updatedAt = data['updatedAt']
@@ -23,14 +24,14 @@ class User:
     @staticmethod
     def validate(user):
         isValid = True
-        query = 'SELECT * FROM user WHERE email = %(email)s;'
-        results = connectToMySQL(User.db).query_db(query, user)
-        if len(results) >= 1:
-            isValid = False
-            flash("That email is already in our database")
-        if not EMAIL_REGEX.match(user['email']):
-            isValid = False
-            flash("Invalid email format")
+        # query = 'SELECT * FROM user WHERE email = %(email)s;'
+        # results = connectToMySQL(User.db).query_db(query, user)
+        # if len(results) >= 1:
+        #     isValid = False
+        #     flash("That email is already in our database")
+        # if not EMAIL_REGEX.match(user['email']):
+        #     isValid = False
+        #     flash("Invalid email format")
         q = 'SELECT * FROM user WHERE username = %(username)s;'
         r = connectToMySQL(User.db).query_db(q, user)
         if len(r) >= 1:
@@ -88,7 +89,7 @@ class User:
     
     @classmethod
     def allUsers(cls):
-        q = 'SELECT * FROM user;'
+        q = 'SELECT * FROM user WHERE app="React Flask App";'
         return connectToMySQL(cls.db).query_db(q)
 
     @classmethod
@@ -101,7 +102,7 @@ class User:
 
     @classmethod
     def getLogin(cls, data):
-        query = "SELECT * FROM user WHERE email = %(email)s OR username = %(username)s;"
+        query = "SELECT * FROM user WHERE email = %(email)s OR username = %(username)s AND app='React Flask App';"
         results = connectToMySQL(cls.db).query_db(query, data)
         if len(results) < 1:
             return False
@@ -109,7 +110,7 @@ class User:
 
     @classmethod
     def save(cls, data):
-        query = 'INSERT INTO user (firstName, lastName, email, username, password) VALUES (%(firstName)s, %(lastName)s, %(email)s, %(username)s, %(password)s);'
+        query = 'INSERT INTO user (firstName, lastName, email, username, password, app) VALUES (%(firstName)s, %(lastName)s, %(email)s, %(username)s, %(password)s, "React Flask App");'
         return connectToMySQL(cls.db).query_db(query, data)
 
     @classmethod

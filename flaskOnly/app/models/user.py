@@ -12,7 +12,7 @@ class User:
         self.lastName = data['lastName']
         self.email = data['email']
         self.username = data['username']
-        self.app = "flask-only"
+        self.app = "Flask Only App"
         self.password = data['password']
         self.createdAt = data['createdAt']
         self.updatedAt = data['updatedAt']
@@ -24,14 +24,14 @@ class User:
     @staticmethod
     def validate(user):
         isValid = True
-        query = 'SELECT * FROM user WHERE email = %(email)s;'
-        results = connectToMySQL(User.db).query_db(query, user)
-        if len(results) >= 1:
-            isValid = False
-            flash("That email is already in our database")
-        if not EMAIL_REGEX.match(user['email']):
-            isValid = False
-            flash("Invalid email format")
+        # query = 'SELECT * FROM user WHERE email = %(email)s;'
+        # results = connectToMySQL(User.db).query_db(query, user)
+        # if len(results) >= 1:
+        #     isValid = False
+        #     flash("That email is already in our database")
+        # if not EMAIL_REGEX.match(user['email']):
+        #     isValid = False
+        #     flash("Invalid email format")
         q = 'SELECT * FROM user WHERE username = %(username)s;'
         r = connectToMySQL(User.db).query_db(q, user)
         if len(r) >= 1:
@@ -89,7 +89,7 @@ class User:
     
     @classmethod
     def allUsers(cls):
-        q = 'SELECT * FROM user;'
+        q = 'SELECT * FROM user WHERE app="Flask Only App";'
         return connectToMySQL(cls.db).query_db(q)
 
     @classmethod
@@ -102,7 +102,7 @@ class User:
 
     @classmethod
     def getLogin(cls, data):
-        query = "SELECT * FROM user WHERE email = %(email)s OR username = %(username)s;"
+        query = "SELECT * FROM user WHERE email = %(email)s OR username = %(username)s AND app = 'Flask Only App';"
         results = connectToMySQL(cls.db).query_db(query, data)
         if len(results) < 1:
             return False

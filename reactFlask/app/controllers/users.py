@@ -1,21 +1,24 @@
 from app import app
-from flask import Flask, render_template, redirect, session, request, flash
+from flask import Flask, redirect, session, request, flash, jsonify
 from flask_bcrypt import Bcrypt
 from app.models.user import User
 from app.models.favorite import Favorite
+from flask_cors import CORS
+from app.config.links import BACK, FRONT
 
+CORS(app)
 
 bcrypt = Bcrypt(app)
 
-@app.route('/')
-def index():
-    return render_template('index.html')
+# @app.route('/')
+# def index():
+#     return render_template('index.html')
 
 @app.route('/register/', methods=['POST'])
 def register():
     isValid = User.validate(request.form)
     if not isValid:  # if isValid = False then redirect to /
-        return redirect('/')
+        return redirect(f'{FRONT}')
     newUser = {
         'firstName': request.form['firstName'],
         'lastName': request.form['lastName'],
@@ -26,10 +29,10 @@ def register():
     id = User.save(newUser)
     if not id:
         flash('Something went wrong')
-        return redirect('/')
+    return redirect(f'{FRONT}')
     session['user_id'] = id
     flash("You are now logged in")
-    return redirect('/dashboard/')
+    return redirect(f'{FRONT}/dashboard/')
 
 @app.route('/login/', methods=['POST'])
 def login():
@@ -40,29 +43,37 @@ def login():
     user = User.getLogin(data) # check if the email is in the database
     if not user: # if not let them know
         flash('That email or username is not in our system')
-        return redirect('/')
+        return redirect(f'{FRONT}')
     if not bcrypt.check_password_hash(user.password, request.form['password']):
         flash('Wrong password')
-        return redirect('/')
+        return redirect(f'{FRONT}')
     session['user_id'] = user.id
     flash("You are now logged in")
-    return redirect('/dashboard/')
+    return redirect(f'{FRONT}/dashboard/')
 
 @app.route('/logout/')
 def logout():
     session.clear()
-    return redirect('/')
+    return redirect('http://127.0.0.1:3000/')
+
+# @app.route('/profile/')
+# def editProfile():
+#     if 'user_id' not in session:
+#         flash('Please log in')
+#         return redirect('/')
+#     data = {
+#         'id': session['user_id']
+#     }
+#     user = User.getOne(data)
+#     return render_template('profile.html', user = user)
 
 @app.route('/profile/')
 def editProfile():
-    if 'user_id' not in session:
-        flash('Please log in')
-        return redirect('/')
     data = {
         'id': session['user_id']
     }
     user = User.getOne(data)
-    return render_template('profile.html', user = user)
+    return jsonify({'user': user}), 200
 
 @app.route('/updateProfile/', methods=['post'])
 def updateProfile():
@@ -93,31 +104,41 @@ def updatePassword():
     flash('Password updated')
     return redirect('/profile/')
 
+# @app.route('/users/')
+# def users():
+#     if 'user_id' not in session:
+#         flash('please log in')
+#         return redirect('/')
+#     data = {
+#         'id': session['user_id']
+#     }
+#     you = User.getOne(data)
+#     users = User.getAll()
+#     favs = Favorite.getAll()
+#     return render_template('users.html', you = you, users = users, favs = favs)
+
 @app.route('/users/')
 def users():
-    if 'user_id' not in session:
-        flash('please log in')
-        return redirect('/')
     data = {
         'id': session['user_id']
     }
     you = User.getOne(data)
     users = User.getAll()
     favs = Favorite.getAll()
-    return render_template('users.html', you = you, users = users, favs = favs)
+    return jsonify({'users': users}, {'you': you}, {'favs': favs}), 200
 
-@app.route('/users/<int:id>/view/')
-def viewUser(id):
-    if 'user_id' not in session:
-        flash('please log in')
-        return redirect('/')
-    data = {
-        'id': session['user_id']
-    }
-    userData = {
-        'id': id
-    }
-    you = User.getOne(data)
-    user = User.getOne(userData)
-    images = User.userFavs(userData)
-    return render_template('viewUser.html', you = you, user = user, images = images)
+# @app.route('/users/<int:id>/view/')
+# def viewUser(id):
+#     if 'user_id' not in session:
+#         flash('please log in')
+#         return redirect('/')
+#     data = {
+#         'id': session['user_id']
+#     }
+#     userData = {
+#         'id': id
+#     }
+#     you = User.getOne(data)
+#     user = User.getOne(userData)
+#     images = User.userFavs(userData)
+#     return render_template('viewUser.html', you = you, user = user, images = images)

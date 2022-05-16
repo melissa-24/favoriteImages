@@ -39,7 +39,7 @@ def login():
     }
     user = User.getLogin(data) # check if the email is in the database
     if not user: # if not let them know
-        flash('That email or username is not in our system')
+        flash('That email or username is not in our system or is part of a different version')
         return redirect('/')
     if not bcrypt.check_password_hash(user.password, request.form['password']):
         flash('Wrong password')

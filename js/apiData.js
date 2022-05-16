@@ -1,5 +1,7 @@
 var flaskUsers = 'https://flask-only.dojo-ninja.com/api/users/'
+// var flaskUsers = 'http://127.0.0.1:5000/api/users/'
 var flaskImgs = 'https://flask-only.dojo-ninja.com/api/imgs/'
+// var flaskImgs = 'http://127.0.0.1:5000/api/imgs/'
 
 $(document).ready(function() {
     $('#flaskUsers').click(function(){

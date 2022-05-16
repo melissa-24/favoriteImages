@@ -4,11 +4,11 @@ from flask import flash
 
 class Favorite:
     db = 'dojoninj_favImgs'
-    # db = 'craftsnh_favoriteImages'
     def __init__(self, data):
         self.id = data['id']
         self.name = data['name']
         self.img = data['img']
+        self.app = "React Flask App"
         self.createdAt = data['createdAt']
         self.updatedAt = data['updatedAt']
         self.user_id = data['user_id']
@@ -24,7 +24,7 @@ class Favorite:
 
     @classmethod
     def allImgs(cls):
-        q = 'SELECT * FROM favorite left join user on favorite.user_id = user.id;'
+        q = 'SELECT * FROM favorite left join user on favorite.user_id = user.id WHERE app="React Flask App";'
         return connectToMySQL(cls.db).query_db(q)
 
     @classmethod
