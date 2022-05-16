@@ -164,6 +164,10 @@ body main .api div {
 body main .api div img {
   max-width: 250px;
 }
+body main #theFlaskUsers,
+body main #theFlaskImgs {
+  display: none;
+}
 body footer {
   display: flex;
   flex-direction: column;

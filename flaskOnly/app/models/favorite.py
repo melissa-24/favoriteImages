@@ -3,7 +3,7 @@ from flask import flash
 
 
 class Favorite:
-    db = 'favImgs'
+    db = 'dojoninj_favImgs'
     # db = 'craftsnh_favoriteImages'
     def __init__(self, data):
         self.id = data['id']
@@ -21,6 +21,11 @@ class Favorite:
         for row in results:
             favs.append(cls(row))
         return favs
+
+    @classmethod
+    def allImgs(cls):
+        q = 'SELECT * FROM favorite left join user on favorite.user_id = user.id;'
+        return connectToMySQL(cls.db).query_db(q)
 
     @classmethod
     def getOne(cls, data):

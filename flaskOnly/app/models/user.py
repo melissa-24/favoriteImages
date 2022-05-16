@@ -5,7 +5,7 @@ EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 from app.models import favorite
 
 class User:
-    db = 'favImgs'
+    db = 'dojoninj_favImgs'
     def __init__(self, data):
         self.id = data['id']
         self.firstName = data['firstName']
@@ -85,6 +85,11 @@ class User:
         for row in results:
             users.append(cls(row))
         return users
+    
+    @classmethod
+    def allUsers(cls):
+        q = 'SELECT * FROM user;'
+        return connectToMySQL(cls.db).query_db(q)
 
     @classmethod
     def getOne(cls, data):
