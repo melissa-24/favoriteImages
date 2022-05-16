@@ -9,7 +9,6 @@ class Favorite:
         self.id = data['id']
         self.name = data['name']
         self.img = data['img']
-        self.app = "flask-only app"
         self.createdAt = data['createdAt']
         self.updatedAt = data['updatedAt']
         self.user_id = data['user_id']

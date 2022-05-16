@@ -12,6 +12,7 @@ class User:
         self.lastName = data['lastName']
         self.email = data['email']
         self.username = data['username']
+        self.app = "flask-only"
         self.password = data['password']
         self.createdAt = data['createdAt']
         self.updatedAt = data['updatedAt']

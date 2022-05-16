@@ -44,8 +44,7 @@ def apiUsers():
             'firstName': row['firstName'],
             'lastName': row['lastName'],
             'email': row['email'],
-            'username': row['username'],
-            'app': row['app']
+            'username': row['username']
         }
         users.append(userData)
         print('row data', row)
@@ -63,8 +62,7 @@ def apiImgs():
             'imgUrl': row['img'],
             'user': row['username'],
             'userFirstName': row['firstName'],
-            'userLastName': row['lastName'],
-            'app': row['app']
+            'userLastName': row['lastName']
         }
         imgs.append(imgData)
     return jsonify({'imgs': imgs}), 200
