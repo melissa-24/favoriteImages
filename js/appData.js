@@ -1,26 +1,8 @@
-var flaskUsers = 'https://flask-only.dojo-ninja.com/api/users/'
-// var flaskUsers = 'http://127.0.0.1:5000/api/users/'
-var flaskImgs = 'https://flask-only.dojo-ninja.com/api/imgs/'
-// var flaskImgs = 'http://127.0.0.1:5000/api/imgs/'
+// var flaskOnly = 'https://flask-only.dojo-ninja.com/api/'
+var flaskOnly = 'http://127.0.0.1:5000/api/'
 
-$(document).ready(function() {
-    $('#flaskUsers').click(function(){
-        $('#theFlaskUsers').animate( {
-            width: 'toggle'
-        }).css({
-            display: 'flex'
-        })
-    })
-    $('#flaskImgs').click(function(){
-        $('#theFlaskImgs').animate({
-            width: 'toggle'
-        }).css({
-            display: 'flex'
-        })
-    })
-})
 async function getFlaskUsers() {
-    var response = await fetch(`${flaskUsers}`)
+    var response = await fetch(`${flaskOnly}users/`)
     var data = await response.json()
     console.log("flask users: ", data.users[0])
     d = data.users
@@ -50,7 +32,7 @@ async function getFlaskUsers() {
 }
 
 async function getFlaskImgs() {
-    var response = await fetch(`${flaskImgs}`)
+    var response = await fetch(`${flaskOnly}imgs/`)
     var data = await response.json()
     console.log("flask imgs: ", data.imgs)
     d = data.imgs

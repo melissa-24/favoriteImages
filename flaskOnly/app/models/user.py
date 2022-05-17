@@ -110,7 +110,7 @@ class User:
 
     @classmethod
     def save(cls, data):
-        query = 'INSERT INTO user (firstName, lastName, email, username, password) VALUES (%(firstName)s, %(lastName)s, %(email)s, %(username)s, %(password)s);'
+        query = 'INSERT INTO user (firstName, lastName, email, username, password, app) VALUES (%(firstName)s, %(lastName)s, %(email)s, %(username)s, %(password)s, "Flask Only App");'
         return connectToMySQL(cls.db).query_db(query, data)
 
     @classmethod

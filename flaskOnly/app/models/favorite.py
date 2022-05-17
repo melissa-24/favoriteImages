@@ -24,7 +24,7 @@ class Favorite:
 
     @classmethod
     def allImgs(cls):
-        q = 'SELECT * FROM favorite left join user on favorite.user_id = user.id WHERE app="Flask Only App";'
+        q = 'SELECT * FROM favorite left join user on favorite.user_id = user.id WHERE favorite.app="Flask Only App";'
         return connectToMySQL(cls.db).query_db(q)
 
     @classmethod
@@ -37,7 +37,7 @@ class Favorite:
 
     @classmethod
     def save(cls, data):
-        query = 'INSERT INTO favorite (name, img, user_id) VALUES (%(name)s, %(img)s, %(user_id)s);'
+        query = 'INSERT INTO favorite (name, img, app, user_id) VALUES (%(name)s, %(img)s, "Flask Only App", %(user_id)s);'
         return connectToMySQL(cls.db).query_db(query, data)
 
     @classmethod

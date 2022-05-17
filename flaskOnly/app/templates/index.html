@@ -11,6 +11,7 @@
     <header>
         <h1>Welcome to our Favorite Images App</h1>
         <nav>
+            {% block menu %} {% include 'menu.html' %} {% endblock menu %}
         </nav>
     </header>
     <div class="messages">
@@ -72,6 +73,5 @@
     <footer>
 
     </footer>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/scripts.js')}}"></script>
 </body>
 </html>
