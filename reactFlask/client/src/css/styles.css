@@ -94,11 +94,11 @@ body #root div main .row {
   width: 95%;
   align-items: flex-start;
 }
-body #root div main .row #images,
+body #root div main .row .images,
 body #root div main .row #temps {
   display: none;
 }
-body #root div main .row #images .row,
+body #root div main .row .images .row,
 body #root div main .row #temps .row {
   display: flex;
   flex-direction: row;
@@ -107,7 +107,7 @@ body #root div main .row #temps .row {
   flex-wrap: wrap;
   width: 100%;
 }
-body #root div main .row #images .row .column,
+body #root div main .row .images .row .column,
 body #root div main .row #temps .row .column {
   display: flex;
   flex-direction: column;
@@ -117,7 +117,7 @@ body #root div main .row #temps .row .column {
   margin: 1em;
   border: 3px groove #1595c7;
 }
-body #root div main .row #images .row .column img,
+body #root div main .row .images .row .column img,
 body #root div main .row #temps .row .column img {
   max-width: 250px;
 }
@@ -152,6 +152,7 @@ body #root div main .api div {
   padding: 0.5em;
   margin: 1em;
   border: 3px groove #1595c7;
+  max-width: 300px;
 }
 body #root div main .api div img {
   max-width: 250px;

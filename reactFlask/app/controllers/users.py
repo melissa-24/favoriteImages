@@ -29,10 +29,10 @@ def register():
     id = User.save(newUser)
     if not id:
         flash('Something went wrong')
-    return redirect(f'{FRONT}')
+        return redirect(f'{FRONT}')
     session['user_id'] = id
     flash("You are now logged in")
-    return redirect(f'{FRONT}/dashboard/')
+    return redirect(f'{FRONT}dashboard/')
 
 @app.route('/login/', methods=['POST'])
 def login():
@@ -49,12 +49,12 @@ def login():
         return redirect(f'{FRONT}')
     session['user_id'] = user.id
     flash("You are now logged in")
-    return redirect(f'{FRONT}/dashboard/')
+    return redirect(f'{FRONT}dashboard/')
 
 @app.route('/logout/')
 def logout():
     session.clear()
-    return redirect('http://127.0.0.1:3000/')
+    return redirect(f'{FRONT}')
 
 # @app.route('/profile/')
 # def editProfile():

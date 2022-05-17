@@ -3,18 +3,35 @@ from app import app
 from flask import Flask, render_template, redirect, session, request, flash, jsonify
 from app.models.favorite import Favorite
 from app.models.user import User
+from flask_cors import CORS
+from app.config.links import BACK, FRONT
 
+CORS(app)
 
-@app.route('/dashboard/')
-def dashboard():
-    if 'user_id' not in session:
-        flash('please log in')
-        return redirect('/')
+@app.route('/api/')
+def apiTest():
+    return jsonify({'API Test': 'API Running'}), 200
+
+@app.route('/api/session/')
+def sessionUser():
     data = {
         'id': session['user_id']
     }
     user = User.getOne(data)
-    return render_template('dashboard.html', user = user, images = User.userFavs(data),)
+    print("session user: ", user)
+    return jsonify({'user': user})
+
+@app.route('/api/dash/')
+def dashboard():
+    if 'user_id' not in session:
+        flash('please log in')
+        return redirect(f'{FRONT}')
+    data = {
+        'id': session['user_id']
+    }
+    user = User.getOne(data)
+    images = User.userFavs(data)
+    return jsonify({'user': user}, {'images': images}), 200
 
 @app.route('/images/add/')
 def addImage():
