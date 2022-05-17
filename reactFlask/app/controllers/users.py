@@ -88,7 +88,7 @@ def updateProfile():
         'username': request.form['username'],
     }
     User.updateUser(updateUser)
-    return redirect('/profile/')
+    return redirect(f'{FRONT}profile/')
 
 @app.route('/updatePassword/', methods=['post'])
 def updatePassword():
@@ -102,7 +102,7 @@ def updatePassword():
     }
     User.updatePassword(updateUser)
     flash('Password updated')
-    return redirect('/profile/')
+    return redirect(f'{FRONT}profile/')
 
 # @app.route('/users/')
 # def users():
@@ -142,3 +142,16 @@ def users():
 #     user = User.getOne(userData)
 #     images = User.userFavs(userData)
 #     return render_template('viewUser.html', you = you, user = user, images = images)
+
+@app.route('/users/<int:id>/view/')
+def viewUser(id):
+    data = {
+        'id': session['user_id']
+    }
+    userData = {
+        'id': id
+    }
+    you = User.getOne(data)
+    user = User.getOne(userData)
+    images = User.userFavs(userData)
+    return jsonify({'you': you}, {'user': user}, {'images': images}), 200

@@ -14,14 +14,6 @@ const Dashboard = () => {
 
     useEffect(() => {
         axios
-        .get("http://localhost:5000/api/session/")
-            .then(res => {
-                console.log("api/dash results: ", res);
-            })
-    })
-
-    useEffect(() => {
-        axios
             .get ("https://flask-only.dojo-ninja.com/api/imgs/")
                 .then(res => {
                     console.log("results: ", res.data.imgs);
