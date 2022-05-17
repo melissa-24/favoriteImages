@@ -44,7 +44,8 @@ def apiUsers():
             'firstName': row['firstName'],
             'lastName': row['lastName'],
             'email': row['email'],
-            'username': row['username']
+            'username': row['username'],
+            'app': row['app']
         }
         users.append(userData)
         print('row data', row)
@@ -53,16 +54,19 @@ def apiUsers():
 @app.route('/api/imgs/')
 def apiImgs():
     allImgs = Favorite.allImgs()
-    print('all imgs', allImgs)
+    print('all imgs:', allImgs)
     imgs = []
-    for row in allImgs:
-        imgData = {
-            'id': row['id'],
-            'name': row['name'],
-            'imgUrl': row['img'],
-            'user': row['username'],
-            'userFirstName': row['firstName'],
-            'userLastName': row['lastName']
-        }
+    if allImgs == False:
+        return jsonify({'imgs': imgs}), 200
+    else:
+        for row in allImgs:
+            imgData = {
+                'id': row['id'],
+                'name': row['name'],
+                'imgUrl': row['img'],
+                'user': row['username'],
+                'userFirstName': row['firstName'],
+                'userLastName': row['lastName']
+            }
         imgs.append(imgData)
-    return jsonify({'imgs': imgs}), 200
+        return jsonify({'imgs': imgs}), 200

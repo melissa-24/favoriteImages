@@ -8,18 +8,17 @@ from app.config.links import BACK, FRONT
 
 CORS(app)
 
-@app.route('/api/')
-def apiTest():
-    return jsonify({'API Test': 'API Running'}), 200
+# @app.route('/api/')
+# def apiTest():
+#     return jsonify({'API Test': 'API Running'}), 200
 
 @app.route('/api/session/')
 def sessionUser():
     data = {
         'id': session['user_id']
     }
-    user = User.getOne(data)
-    print("session user: ", user)
-    return jsonify({'user': user})
+    user = User.getUser(data)
+    return jsonify({'user': user}), 200
 
 @app.route('/api/dash/')
 def dashboard():
@@ -29,7 +28,7 @@ def dashboard():
     data = {
         'id': session['user_id']
     }
-    user = User.getOne(data)
+    user = User.getUser(data)
     images = User.userFavs(data)
     return jsonify({'user': user}, {'images': images}), 200
 

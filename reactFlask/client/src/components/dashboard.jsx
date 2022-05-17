@@ -26,6 +26,14 @@ const Dashboard = () => {
 
     console.log(imgs);
 
+    useEffect(() => {
+        axios
+            .get("http://127.0.0.1:5000/api/session/")
+                .then(res => {
+                    console.log("session results: ", res)
+                })
+    })
+
 
     return (
         <>

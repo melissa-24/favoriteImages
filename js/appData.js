@@ -1,13 +1,37 @@
-// var flaskOnly = 'https://flask-only.dojo-ninja.com/api/'
-var flaskOnly = 'http://127.0.0.1:5000/api/'
+var flaskOnly = 'https://flask-only.dojo-ninja.com/api/'
+// var flaskOnly = 'http://127.0.0.1:5000/api/'
+// var reactFlask = 'https://react-flask.dojo-ninja.com/api/'
+var reactFlask = 'http://127.0.0.1:5000/api/'
+
+var flaskUsers = []
+var flaskImgs = []
 
 async function getFlaskUsers() {
-    var response = await fetch(`${flaskOnly}users/`)
-    var data = await response.json()
-    console.log("flask users: ", data.users[0])
-    d = data.users
+    // var response = await fetch(`${flaskOnly}users/`)
+    // var data = await response.json()
+    // console.log("flask users: ", data.users[0])
+    var fOnlyR = await fetch(`${flaskOnly}users/`)
+    var reactFR = await fetch(`${reactFlask}users/`)
+    var fOnlyData = await fOnlyR.json()
+    var reactFData = await reactFR.json()
+    var fod = fOnlyData.users
+    var rfd = reactFData.users
+    // console.log("all Flask: ", d)
+    for (var i = 0; i < fod.length; i++) {
+        console.log("allFlask: ", fod[i])
+        flaskUsers.push(fod[i])
+        // console.log("flaskOnly array in the loop: ", flaskUsers)
+    }
+    // console.log("after push before reactFlask outside of loop: ", flaskUsers)
+    for (var i = 0; i < rfd.length; i++) {
+        flaskUsers.push(rfd[i])
+        // console.log("reactFlask array in the loop: ", flaskUsers)
+    }
+    // console.log("after push after reactFlask outside of loop: ", flaskUsers)
+    d = flaskUsers
+    console.log("the array to display: ", d)
     for (var i = 0; i < d.length; i++) {
-        // console.log(d)
+        console.log(d)
         var node = document.createElement('div')
         var h2Name = document.createElement('h2')
         var h2User = document.createElement('h2')
@@ -32,10 +56,28 @@ async function getFlaskUsers() {
 }
 
 async function getFlaskImgs() {
-    var response = await fetch(`${flaskOnly}imgs/`)
-    var data = await response.json()
-    console.log("flask imgs: ", data.imgs)
-    d = data.imgs
+    // var response = await fetch(`${flaskOnly}imgs/`)
+    // var data = await response.json()
+    // console.log("flask imgs: ", data.imgs)
+    var fOnlyR = await fetch(`${flaskOnly}imgs/`)
+    var reactFR = await fetch(`${reactFlask}imgs/`)
+    var fOnlyData = await fOnlyR.json()
+    var reactFData = await reactFR.json()
+    var fod = fOnlyData.imgs
+    var rfd = reactFData.imgs
+    // console.log("all Flask: ", d)
+    for (var i = 0; i < fod.length; i++) {
+        console.log("allFlask: ", fod[i])
+        flaskImgs.push(fod[i])
+        console.log("flaskOnly array in the loop: ", flaskImgs)
+    }
+    console.log("after push before reactFlask outside of loop: ", flaskImgs)
+    for (var i = 0; i < rfd.length; i++) {
+        flaskImgs.push(rfd[i])
+        console.log("reactFlask array in the loop: ", flaskImgs)
+    }
+    console.log("after push after reactFlask outside of loop: ", flaskImgs)
+    d = flaskImgs
     for (var i = 0; i < d.length; i++) {
         // console.log(d)
         var node = document.createElement('div')

@@ -99,6 +99,11 @@ class User:
         if len(results) < 1:
             return False
         return cls(results[0])
+    
+    @classmethod
+    def getUser(cls, data):
+        query = "SELECT * FROM user WHERE id = %(id)s;"
+        return connectToMySQL(cls.db).query_db(query, data)
 
     @classmethod
     def getLogin(cls, data):

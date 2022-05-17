@@ -10,9 +10,9 @@ CORS(app)
 
 bcrypt = Bcrypt(app)
 
-# @app.route('/')
-# def index():
-#     return render_template('index.html')
+@app.route('/')
+def index():
+    return redirect('/api/')
 
 @app.route('/register/', methods=['POST'])
 def register():
@@ -49,6 +49,7 @@ def login():
         return redirect(f'{FRONT}')
     session['user_id'] = user.id
     flash("You are now logged in")
+    print("user in session: ", session['user_id'])
     return redirect(f'{FRONT}dashboard/')
 
 @app.route('/logout/')
