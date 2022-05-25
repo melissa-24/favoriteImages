@@ -13,6 +13,7 @@ DEBUG = True
 # DEBUG = False
 
 ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = ['django-only.dojo-ninja.com']
 
 
 INSTALLED_APPS = [
@@ -74,7 +75,7 @@ WSGI_APPLICATION = 'favoriteImages.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'mysql.connector.django',
-        'NAME': 'favImgs',
+        'NAME': 'dojoninj_favImgs',
         'USER': 'root',
         'PASSWORD': 'HoneyBee#4',
         'HOST': 'localhost',

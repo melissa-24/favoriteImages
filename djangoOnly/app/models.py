@@ -41,6 +41,8 @@ class User(models.Model):
     objects = UserManager()
     def __str__(self):
         return f'{self.firstName} {self.lastName}'
+    def fullName(self):
+        return f'{self.firstName} {self.lastName}'
 
 class Favorite(models.Model):
     name = models.CharField(max_length=255)

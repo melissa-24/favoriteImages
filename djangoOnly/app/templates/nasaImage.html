@@ -6,11 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/styles.css'%}">
-    <title>{{user.fullName}}</title>
+    <title>Nasa Images</title>
 </head>
 <body>
     <header>
         <h1>Favorite Images App</h1>
+        <h1>Welcome {{you.fullName}}</h1>
         <nav>
             {% block menu %} {% include 'menu.html' %} {% endblock menu %}
         </nav>
@@ -23,30 +24,19 @@
         {% endif %}
     </div>
     <main>
-        <h1>Welcome {{user.firstName}} {{user.lastName}}</h1>
-        <div class="row">
-            <button><a href="/images/add/">Add Images</a></button>
-            <button><a href="/profile/">View/Edit your information</a></button>
+        <h1>Welcome {{user.fullName}}</h1>
+        <div class="nasa">
+            <h3>Astronomy Photo of the Day</h3>
+            <button id="button">Click to see today's photo of the day</button>
+            <div class="photo"></div>
         </div>
-        <button id="image">Show your Images</button>
-        <div class="row">
-            <div id="images">
-                <div class="row">
-                    {% for image in images %}
-                        <div class="column">
-                            <img src="{{image.img}}" alt="{{image.name}}">
-                            <h4>{{image.name}}</h4>
-                        </div>
-                    {% endfor %}
-                </div>
-            </div>
-        </div>
-
     </main>
     <footer>
 
     </footer>
     <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
     <script src='{% static "js/scripts.js"%}'></script>
+    <script src='{% static "js/key.js"%}'></script>
+    <script src='{% static "js/nasa.js"%}'></script>
 </body>
 </html>

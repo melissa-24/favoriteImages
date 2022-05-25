@@ -11,6 +11,7 @@
 <body>
     <header>
         <h1>Favorite Images App</h1>
+        <h1>Welcome {{you.fullName}}</h1>
         <nav>
             {% block menu %} {% include 'menu.html' %} {% endblock menu %}
         </nav>
@@ -23,12 +24,8 @@
         {% endif %}
     </div>
     <main>
-        <h1>Welcome {{user.firstName}} {{user.lastName}}</h1>
-        <div class="row">
-            <button><a href="/images/add/">Add Images</a></button>
-            <button><a href="/profile/">View/Edit your information</a></button>
-        </div>
-        <button id="image">Show your Images</button>
+        <h1>{{user.username}}</h1>
+        <button id="image">Show {{user.username}}'s Images</button>
         <div class="row">
             <div id="images">
                 <div class="row">
@@ -36,12 +33,17 @@
                         <div class="column">
                             <img src="{{image.img}}" alt="{{image.name}}">
                             <h4>{{image.name}}</h4>
+                            <form action="/images/create/" method='post'>
+                                {% csrf_token %}
+                                <input type="hidden" name='name' value='{{image.name}}'>
+                                <input type="hidden" name="img" value='{{image.img}}'>
+                                <button>Save to your favorites</button>
+                            </form>
                         </div>
                     {% endfor %}
                 </div>
             </div>
         </div>
-
     </main>
     <footer>
 

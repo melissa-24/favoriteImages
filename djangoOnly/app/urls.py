@@ -10,10 +10,10 @@ urlpatterns = [
     path('profile/update/', views.updateProfile),
     path('profile/updatePass/', views.updatePass),
     path('users/', views.users),
-    # path('users/<int:user_id>/view/', views.viewUser),
+    path('users/<int:user_id>/view/', views.viewUser),
     path('dashboard/', views.dashboard),
     # path('images/add/', views.addImage),
-    # path('images/create/', views.createImages),
-    # path('images/nasa/', views.nasaImage),
+    path('images/create/', views.createImages),
+    path('images/nasa/', views.nasaImage),
     # path('images/looneyToones/', views.looneyImages),
 ]
