@@ -2,7 +2,17 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from app.models import *
 
-
+def dashboard(request):
+    if 'user_id' not in request.session:
+        return redirect('/')
+    user = User.objects.get(id=request.session['user_id'])
+    images = Favorite.objects.filter(user_id=user)
+    context = {
+        'user': user,
+        'images': images,
+    }
+    return render(request, 'dashboard.html', context)
+    
 def addImage(request):
     if 'user_id' not in request.session:
         return redirect('/')
