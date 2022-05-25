@@ -65,7 +65,10 @@ WSGI_APPLICATION = 'favoriteImages.wsgi.application'
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'db',
+#         # 'NAME': 'DB',
+#         # 'USER': 'USER',
+#         # 'PASSWORD': 'PASSWORD',
+#         'NAME': 'dojoninj_favImgs',
 #         'USER': 'root',
 #         'PASSWORD': 'HoneyBee#4',
 #         'HOST': 'localhost',
