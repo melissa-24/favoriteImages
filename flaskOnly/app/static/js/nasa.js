@@ -8,8 +8,7 @@ $(document).ready(function() {
         var html_str = ""
         html_str +="<img id='img' src='" + res.url + "' alt='Nasa Photo'>"
         $(".photo").html(html_str)
-        var form_str
-        form_str +="<input type='hidden' name='name' value='" + res.title +"'><input type='hidden' name='img' value='" + res.url +"'> <button>Save Img to Database</button>"
-        $(".nasaForm").html(form_str)
+        html_str +="<form action='/images/create/' method='post'> <input type='hidden' name='name' value='" + res.title +"'><input type='hidden' name='img' value='" + res.url +"'> <button>Save Img to Database</button></form>"
+        $(".photo").html(html_str)
     }, 'json')
 })
