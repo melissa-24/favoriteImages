@@ -15,5 +15,5 @@ urlpatterns = [
     # path('images/add/', views.addImage),
     path('images/create/', views.createImages),
     path('images/nasa/', views.nasaImage),
-    # path('images/looneyToones/', views.looneyImages),
+    path('images/looneyToones/', views.tuneImages),
 ]

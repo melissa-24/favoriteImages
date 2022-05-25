@@ -1,7 +1,12 @@
 var toons = 'https://dojo.navyladyveteran.com/characters/'
 // var squish = 'https://dojo.navyladyveteran.com/squishies/'
 
-async function getToons() {
+var csrfToken = document.getElementById("token");
+console.log(csrfToken.innerHTML);
+var token = document.querySelector("#token input").value;
+console.log("the token test:", token)
+
+async function getTunes() {
     var response = await fetch(`${toons}`)
     var data = await response.json()
     console.log("full toon api data:", data)
@@ -11,6 +16,7 @@ async function getToons() {
         var h2 = document.createElement('h2')
         var h3 = document.createElement('h3')
         var form = document.createElement('form')
+        var csrfInput = document.createElement('input')
         var nameInput = document.createElement('input')
         var imgInput = document.createElement('input')
         var button = document.createElement('button')
@@ -26,16 +32,19 @@ async function getToons() {
         form.setAttribute('action', '/images/create/')
         nameInput.setAttribute('type', 'hidden')
         imgInput.setAttribute('type', 'hidden')
+        csrfInput.setAttribute('type', 'hidden')
+        csrfInput.setAttribute('name', 'csrfmiddlewaretoken')
+        csrfInput.setAttribute('value', token)
         namesrc = `${data[i].name}`
         imgsrc = `${data[i].img}`
         nameInput.setAttribute('name', 'name')
         imgInput.setAttribute('name', 'img')
         nameInput.setAttribute('value', namesrc)
         imgInput.setAttribute('value', imgsrc)
+        form.appendChild(csrfInput)
         form.appendChild(nameInput)
         form.appendChild(imgInput)
         form.appendChild(button)
-        // console.log("name and img only: ", namesrc, imgsrc)
         h3.appendChild(birth)
         node.appendChild(h2)
         node.appendChild(h3)
