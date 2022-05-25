@@ -16,7 +16,7 @@ This project is based off of an application that I built during one of my python
 
 # Python environment packages:
 - I used a basic pip environment for both the django and flask parts to the requirements file has all the packages needed for both
-- [requirements.txt](requirements.txt)
+- [requirements.txt](misc/requirements.txt)
 
 # Node packages:
 
