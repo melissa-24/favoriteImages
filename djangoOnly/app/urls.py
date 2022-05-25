@@ -17,4 +17,6 @@ urlpatterns = [
     path('images/nasa/', views.nasaImage),
     path('images/looneyToones/', views.tuneImages),
     path('api/', views.apiBase),
+    path('api/users/', views.apiUsers),
+    path('api/imgs/', views.apiImgs),
 ]

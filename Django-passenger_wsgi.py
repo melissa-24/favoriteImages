@@ -1,1 +1,0 @@
-from favoriteImages.wsgi import application
