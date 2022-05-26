@@ -1,0 +1,27 @@
+doctype html
+html
+    head
+        meta(charset="utf-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1, shrink-to-fit=no")
+        link(rel='stylesheet' href='/css/styles.css')
+        title Looney Tunes API
+    body
+        header
+            h1 Looney Tunes API
+            nav
+                a(href='/') Pug Home
+                a(href='https://dojo-ninja.com') Main Site Home
+                a(href='/nasa') Nasa API
+                a(href='/tunes') Tunes API
+                //- a(href='/api') The Data
+        main
+            button(onclick='getTunes()') Get the Looney Tunes
+            div(id='tune' class='api')
+        footer
+            h4 Created by Melissa Longenberger
+            h4 Started - May 3rd 2022 - Completed - TBD
+            h4
+                a(href="https://github.com/melissa-24/favoriteImages" target="_blank") Source Code
+        script(src='https://code.jquery.com/jquery-2.1.3.min.js')
+        script(src='/js/scripts.js')
+        script(src='/js/tunes.js')
