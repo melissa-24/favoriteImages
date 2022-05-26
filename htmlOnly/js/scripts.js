@@ -12,15 +12,22 @@ $(document).ready(function(){
             width: 'toggle'
         })
     })
-    $('#flaskUsers').click(function(){
-        $('#theFlaskUsers').animate( {
+    $('#allUsers').click(function(){
+        $('#allTheUsers').animate( {
             width: 'toggle'
         }).css({
             display: 'flex'
         })
     })
-    $('#flaskImgs').click(function(){
-        $('#theFlaskImgs').animate({
+    $('#allImgs').click(function(){
+        $('#allTheImgs').animate({
+            width: 'toggle'
+        }).css({
+            display: 'flex'
+        })
+    })
+    $('#allTemps').click(function(){
+        $('#allTheTemps').animate({
             width: 'toggle'
         }).css({
             display: 'flex'

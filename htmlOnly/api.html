@@ -19,13 +19,15 @@
         </nav>
     </header>
     <main>
-        <h1>Click the buttons below to see the users/imgs that have been logged into the databases</h1>
-        <button id="flaskUsers">Show Users in Flask Backend</button>
-        <div id="theFlaskUsers" class="api">
+        <h1>Click the buttons below to see the users/imgs that have been logged into the databases including the weather logged from the original app</h1>
+        <button id="allUsers">Show Users</button>
+        <div id="allTheUsers" class="api">
         </div>
-        <button id="flaskImgs">Show Images in Flask Backend</button>
-        <div id="theFlaskImgs" class="api">
+        <button id="allImgs">Show Images</button>
+        <div id="allTheImgs" class="api">
         </div>
+        <button id="allTemps">Show Logged Weather (original app data only for now)</button>
+        <div id="allTheTemps" class="api"></div>
     </main>
     <footer>
         <h4>Created by Melissa Longenberger</h4>
@@ -38,6 +40,7 @@
     <script>
         getUsers()
         getImgs()
+        getTemps()
     </script>
 </body>
 </html>

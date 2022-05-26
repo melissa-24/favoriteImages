@@ -164,8 +164,9 @@ body main .api div {
 body main .api div img {
   max-width: 250px;
 }
-body main #theFlaskUsers,
-body main #theFlaskImgs {
+body main #allTheUsers,
+body main #allTheImgs,
+body main #allTheTemps {
   display: none;
 }
 body footer {
