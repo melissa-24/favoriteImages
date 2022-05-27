@@ -10,8 +10,10 @@ var origApp = 'https://dojofun.navyladyveteran.com/api/'
 allUsers = []
 allImages = []
 allTemps = []
+console.log('js still loaded')
 
 async function getUsers() {
+    console.log('inside getUsers')
     var flaskRes = await fetch(`${flaskOnly}users/`)
     var djangoRes = await fetch(`${djangoOnly}users/`)
     var origRes = await fetch(`${origApp}users/`)
@@ -58,7 +60,10 @@ async function getUsers() {
     }
 }
 
+console.log('js still loaded after getUsers')
+
 async function getImgs() {
+    console.log('inside getImgs')
     var flaskRes = await fetch(`${flaskOnly}imgs/`)
     var djangoRes = await fetch(`${djangoOnly}imgs/`)
     var origRes = await fetch(`${origApp}imgs/`)
@@ -106,7 +111,10 @@ async function getImgs() {
     }
 }
 
+console.log('js still loaded after getImgs')
+
 async function getTemps() {
+    console.log('inside getTemps')
     var origRes = await fetch(`${origApp}weather/`)
     var origData = await origRes.json()
     console.log("Weather Data: ", origData)
@@ -171,3 +179,6 @@ async function getTemps() {
     }
     document.getElementById('allTheTemps').appendChild(node)
 }
+
+console.log('js still loaded after getTemps')
+console.log('read whole doc however await functions may not have run')

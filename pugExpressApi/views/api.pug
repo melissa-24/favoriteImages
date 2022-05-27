@@ -16,11 +16,11 @@ html
                 a(href='/api') The Data
         main
             h1 Click the buttons below to see the users/imgs that have been logged into the databases including the weather logged from the original app
-            button(id='allUsers') Show Users 
+            button(id='allUsers' onclick='getUsers()') Show Users 
             div(id='allTheUsers' class='api')
-            button(id='allImgs') Show Images 
+            button(id='allImgs' onclick='getImgs()') Show Images 
             div(id='allTheImgs')
-            button(id='allTemps') Show Logged Weather (original app data only for now)
+            button(id='allTemps' onclick='getTemps()') Show Logged Weather (original app data only for now)
             div(id='allTheTemps', class='api')
         footer
             h4 Created by Melissa Longenberger
