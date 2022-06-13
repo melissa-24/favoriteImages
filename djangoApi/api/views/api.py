@@ -15,7 +15,7 @@ def apiBase(request):
     return JsonResponse(status, content_type="application/json")
 
 def apiUsers(request):
-    allUsers = list(User.objects.filter(app="Django Only App").values())
+    allUsers = list(User.objects.filter(app="API").values())
     users = []
     for row in allUsers:
         userData = {
@@ -26,8 +26,9 @@ def apiUsers(request):
             'username': row['username'],
             'app': row['app'],
         }
+        print('data in loop:', userData)
         users.append(userData)
-    # print("all users: ", users)
+    print("all users: ", users)
     return JsonResponse(users, safe = False, content_type="application/json")
 
 def apiImgs(request):

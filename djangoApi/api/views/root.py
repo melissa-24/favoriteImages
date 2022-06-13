@@ -14,3 +14,7 @@ status = {
 
 def index(request):
     return JsonResponse(status, content_type="application/json")
+
+def register(request):
+    errors = User.objects.validate(request.POST)
+    return JsonResponse(errors, content_type='application/json')
