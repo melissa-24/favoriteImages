@@ -1,4 +1,4 @@
-package com.codingdojo.favoriteimages;
+package com.beedevservices.favoriteimages;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;

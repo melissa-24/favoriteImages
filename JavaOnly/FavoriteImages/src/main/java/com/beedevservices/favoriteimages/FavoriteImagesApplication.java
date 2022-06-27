@@ -1,4 +1,4 @@
-package com.codingdojo.favoriteimages;
+package com.beedevservices.favoriteimages;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
