@@ -1,0 +1,33 @@
+doctype html
+html
+    head
+        meta(charset="utf-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1, shrink-to-fit=no")
+        link(rel='stylesheet' href='/css/styles.css')
+        link(rel='shortcut icon' href='https://images.craftsnherbs.com/bee/IMG_0992.jpg')
+        title The Data
+    body
+        header
+            h1 Welcome to the data page
+            nav
+                a(href='/') Pug Home
+                a(href='https://dojo-ninja.com') Main Site Home
+                a(href='/nasa') Nasa API
+                a(href='/tunes') Tunes API
+                a(href='/api') The Data
+        main
+            h1 Click the buttons below to see the users/imgs that have been logged into the databases including the weather logged from the original app
+            button(id='allUsers' onclick='getUsers()') Show Users 
+            div(id='allTheUsers' class='api')
+            button(id='allImgs' onclick='getImgs()') Show Images 
+            div(id='allTheImgs' class='api')
+            button(id='allTemps' onclick='getTemps()') Show Logged Weather (original app data only for now)
+            div(id='allTheTemps', class='api')
+        footer
+            h4 Created by Melissa Longenberger
+            h4 Started - May 3rd 2022 - Completed - TBD
+            h4
+                a(href="https://github.com/melissa-24/favoriteImages" target="_blank") Source Code
+        script(src='https://code.jquery.com/jquery-2.1.3.min.js')
+        script(src='/js/scripts.js')
+        script(src='/js/appData.js')
