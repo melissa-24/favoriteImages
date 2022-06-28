@@ -4,7 +4,10 @@ const cors = require('cors')
 const session = require('express-session')
 const knexSessionStore = require('connect-session-knex')(session)
 
-
+const authRouter = require('../auth/authRouter.js');
+const userRouter = require('../users/userRouter.js');
+const favoriteRouter = require('../favorties/favoritesRouter')
+const authenticate = require('../auth/authenticate.js');
 
 
 const app = express()
@@ -32,10 +35,17 @@ const sessionConfig = {
 app.use(helmet())
 app.use(cors())
 app.use(express.json())
-server.use(session(sessionConfig));
+app.use(session(sessionConfig));
 
-app.use('/', (req, res) => {
+
+app.use('/api/auth', authRouter);
+app.use('/api/users', authenticate, userRouter);
+app.use('/api/favorites', favoriteRouter);
+app.use('/api', (req, res) => {
     res.send(`<h2>Express/Node Database is Running</h2>`)
+})
+app.use('/', (req, res) => {
+    res.send(`<h2>Server for Express/Node Database is Running</h2>`)
 })
 
 app.use((err, req, res, next) => {
