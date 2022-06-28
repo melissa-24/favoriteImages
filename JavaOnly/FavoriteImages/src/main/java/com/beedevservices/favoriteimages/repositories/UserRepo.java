@@ -1,5 +1,14 @@
 package com.beedevservices.favoriteimages.repositories;
 
-public interface UserRepo {
+import java.util.Optional;
 
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+import com.beedevservices.favoriteimages.models.User;
+
+
+@Repository
+public interface UserRepo extends CrudRepository<User, Long> {
+	Optional<User> findByEmail(String email);
 }

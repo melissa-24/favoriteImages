@@ -72,7 +72,7 @@ body main button a {
   padding: 1em;
   border-radius: 50%;
 }
-body main .row {
+body main .theRow {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -80,12 +80,12 @@ body main .row {
   width: 95%;
   align-items: flex-start;
 }
-body main .row #images,
-body main .row #temps {
+body main .theRow #images,
+body main .theRow #temps {
   display: none;
 }
-body main .row #images .row,
-body main .row #temps .row {
+body main .theRow #images .row,
+body main .theRow #temps .row {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -93,8 +93,8 @@ body main .row #temps .row {
   flex-wrap: wrap;
   width: 100%;
 }
-body main .row #images .row .column,
-body main .row #temps .row .column {
+body main .theRow #images .row .column,
+body main .theRow #temps .row .column {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -103,8 +103,8 @@ body main .row #temps .row .column {
   margin: 1em;
   border: 3px groove #1595c7;
 }
-body main .row #images .row .column img,
-body main .row #temps .row .column img {
+body main .theRow #images .row .column img,
+body main .theRow #temps .row .column img {
   max-width: 250px;
 }
 body main .nasa {
