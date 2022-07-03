@@ -33,6 +33,11 @@ app.get('/api', function(req, res) {
         
     })
 })
+app.get('/analysis', function(req, res) {
+    res.render('analysis', {
+        
+    })
+})
 
 
 app.listen(port, () => {

@@ -3,6 +3,7 @@
 var flaskOnly = 'https://flask-only.dojo-ninja.com/api/'
 var djangoOnly = 'https://django-only.dojo-ninja.com/api/'
 var origApp = 'https://dojofun.navyladyveteran.com/api/'
+var expressAPI = 'https://express-api.dojo-ninja.com/api/no-auth/'
 // var origApp = 'http://127.0.0.1:5000/api/'
 
 allUsers = []
@@ -13,13 +14,13 @@ async function getUsers() {
     var flaskRes = await fetch(`${flaskOnly}users/`)
     var djangoRes = await fetch(`${djangoOnly}users/`)
     var origRes = await fetch(`${origApp}users/`)
-    // console.log("r from django", djangoRes)
+    var expressRes = await fetch(`${expressAPI}users`)
+    // console.log("from expressapi", expressRes)
     var djangoData = await djangoRes.json()
     var flaskData = await flaskRes.json()
     var origData = await origRes.json()
-    // console.log("flask users: ", flaskData.users[0])
-    // console.log("Django Users:", djangoData)
-    console.log("Orig User Data: ", origData)
+    var expressData = await expressRes.json()
+    // console.log("express users: ", expressData[0].app)
     for (var i=0; i < flaskData.users.length; i++) {
         allUsers.push(flaskData.users[i])
     }
@@ -29,7 +30,10 @@ async function getUsers() {
     for (var i=0; i < origData.users.length; i++) {
         allUsers.push(origData.users[i])
     }
-    // console.log("allUsers after push:", allUsers)
+    for (var i=0; i < expressData.length; i++) {
+        allUsers.push(expressData[i])
+    }
+    console.log("allUsers after push:", allUsers)
     d = allUsers
     for (var i = 0; i < d.length; i++) {
         // console.log(d)
@@ -60,9 +64,11 @@ async function getImgs() {
     var flaskRes = await fetch(`${flaskOnly}imgs/`)
     var djangoRes = await fetch(`${djangoOnly}imgs/`)
     var origRes = await fetch(`${origApp}imgs/`)
+    var expressRes = await fetch(`${expressAPI}users`)
     var flaskData = await flaskRes.json()
     var djangoData = await djangoRes.json()
     var origData = await origRes.json()
+    var expressData = await expressRes.json()
     // console.log("flask imgs: ", data.imgs)
     console.log("Orig Img Data: ", origData)
     for (var i=0; i < flaskData.imgs.length; i++) {
@@ -73,6 +79,9 @@ async function getImgs() {
     }
     for (var i=0; i < origData.imgs.length; i++) {
         allImages.push(origData.imgs[i])
+    }
+    for (var i=0; i < expressData.length; i++) {
+        allImages.push(expressData[i])
     }
     // console.log("all images after push: ", allImages)
     d = allImages

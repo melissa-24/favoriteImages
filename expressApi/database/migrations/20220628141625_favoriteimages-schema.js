@@ -2,7 +2,7 @@ const { table } = require('../db-config');
 
 exports.up = function(knex) {
     return knex.schema
-      .createTable("user", tbl => {
+      .createTable("express_user", tbl => {
         tbl.increments();
         tbl.string('firstName').notNullable();
         tbl.string('lastName').notNullable();
@@ -12,9 +12,9 @@ exports.up = function(knex) {
         tbl.string('password').notNullable();
         tbl.timestamp('createdAt').defaultTo(knex.fn.now())
       })
-      .createTable('favorite', tbl => {
+      .createTable('express_favorite', tbl => {
         tbl.increments();
-        tbl.integer('users_id').unsigned().notNullable().references('id').inTable('user').onUpdate('CASCADE').onDelete('CASCADE');
+        tbl.integer('users_id').unsigned().notNullable().references('id').inTable('express_user').onUpdate('CASCADE').onDelete('CASCADE');
         tbl.string('img').notNullable();
         tbl.string('name').notNullable();
         tbl.string('app').defaultTo('Express Backend API');
@@ -24,6 +24,6 @@ exports.up = function(knex) {
   
   exports.down = function(knex) {
     return knex.schema
-      .dropTableIfExists('favorite')
-      .dropTableIfExists('user')
+      .dropTableIfExists('express_favorite')
+      .dropTableIfExists('express_user')
   }; 

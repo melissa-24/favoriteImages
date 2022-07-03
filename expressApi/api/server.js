@@ -6,8 +6,9 @@ const knexSessionStore = require('connect-session-knex')(session)
 
 const authRouter = require('../auth/authRouter.js');
 const userRouter = require('../users/userRouter.js');
-const favoriteRouter = require('../favorties/favoritesRouter')
+const favoriteRouter = require('../favorites/favoritesRouter')
 const authenticate = require('../auth/authenticate.js');
+const noAuth = require('./noAuthRouter')
 
 
 const app = express()
@@ -41,6 +42,7 @@ app.use(session(sessionConfig));
 app.use('/api/auth', authRouter);
 app.use('/api/users', authenticate, userRouter);
 app.use('/api/favorites', favoriteRouter);
+app.use('/api/no-auth', noAuth)
 app.use('/api', (req, res) => {
     res.send(`<h2>Express/Node Database is Running</h2>`)
 })

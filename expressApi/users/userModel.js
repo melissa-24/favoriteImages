@@ -10,25 +10,25 @@ module.exports = {
 };
 
 function findAll() {
-    return db("user");
+    return db("express_user");
 }
 
 function findBy(filter) {
-    return db("user").where(filter).first();
+    return db("express_user").where(filter).first();
 }
 
 function findById(id) {
-    return db("user").where({id: id}).first();
+    return db("express_user").where({id: id}).first();
 }
 
 function add(user) {
-    return db("user").insert(user, "id").then(ids => findById(ids[0]));
+    return db("express_user").insert(user, "id").then(ids => findById(ids[0]));
 }
 
 function update(changes, id) {
-    return db("user").where({ id: id }).update(changes).then(() => findById(id));
+    return db("express_user").where({ id: id }).update(changes).then(() => findById(id));
 }
 
 function remove(id) {
-    return db("user").where({id: id}).delete();
+    return db("express_user").where({id: id}).delete();
 }
