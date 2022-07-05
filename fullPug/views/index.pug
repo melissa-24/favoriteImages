@@ -1,0 +1,46 @@
+doctype html
+html
+    head
+        meta(charset="utf-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1, shrink-to-fit=no")
+        link(rel='stylesheet' href='/css/styles.css')
+        link(rel='shortcut icon' href='https://images.craftsnherbs.com/bee/IMG_0992.jpg')
+        title Favorite Images Project
+    body
+        header
+            h1 Welcome to to my Favorite Images Project
+            h2 The Full Stack Pug/Node Version
+            nav
+                a(href='/') Pug Home
+                a(href='https://dojo-ninja.com') Main Site Home
+
+        main
+            div(class='row')
+                form(action='/api/auth/login' method='post')
+                    section 
+                        label(for='username') Username 
+                        input(type='text' name='username')
+                    section
+                        label(for='password') Password 
+                        input(type='password' name='password')
+                    button Login
+                form(action='/api/auth/register' method='post')
+                    section
+                        label(for='firstName') First Name 
+                        input(type='text' name='firstName')
+                    section 
+                        label(for="lastName") Last Name 
+                        input(type="text" name='lastName') 
+                    section 
+                        label(for="email") Email 
+                        input(type="text" name='email') 
+                    section 
+                        label(for="username") Username 
+                        input(type="text", name="username")
+                    section 
+                        label(for="password") Password 
+                        input(type="password", name="password")
+                    section 
+                        label(for="confirm") Confirm Password 
+                        input(type="password", name="confirm")
+                    button Register and Login
