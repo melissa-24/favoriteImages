@@ -1,6 +1,7 @@
 import React from 'react'
 
 const Main = () => {
+    console.log("I am on main.jsx")
     return (
         <>
         <h1>Favorite Images</h1>
