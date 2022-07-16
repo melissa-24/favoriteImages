@@ -136,6 +136,9 @@ body #root .App main .nasa .photo img {
   max-width: 400px;
   display: none;
 }
+body #root .App main #tune {
+  display: none;
+}
 body #root .App main .api {
   display: flex;
   flex-direction: row;
