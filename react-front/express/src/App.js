@@ -4,6 +4,7 @@ import './css/styles.css'
 import Header from './components/base/header'
 import Footer from './components/base/footer'
 import Main from './components/main'
+import Express from './components/express'
 
 export default function App() {
   return (
@@ -13,6 +14,7 @@ export default function App() {
       </header>
       <main>
       <Routes>
+        <Route path='/express' element={<Express />} />
         <Route exact path="/" element={<Main />} />
       </Routes>
       </main>
