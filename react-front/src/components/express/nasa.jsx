@@ -15,6 +15,10 @@ const Nasa = () => {
             .then((res) => setData(res.data))
             .catch((err) => console.error(err))
     }, [])
+    useEffect(() => {
+        axios
+            .post(`https://express-api.dojo-ninja.com/api/favorites`)
+    })
     function button() {
         console.log("button clicked")
         var el = document.getElementById('img')
